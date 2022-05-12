@@ -1,0 +1,5 @@
+<div [ngStyle]="src && src.includes('assets') && {'display': 'none'}" #avatar>
+    {{letter}}
+</div>
+
+<img [src]="src" [ngStyle]="{'width': fontSize || '44px', 'height': fontSize || '44px',  'vertical-align': 'middle', 'border-radius': _borderRadius}" *ngIf="src && src.includes('assets')" />

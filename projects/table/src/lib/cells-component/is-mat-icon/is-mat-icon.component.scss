@@ -1,0 +1,20 @@
+:host {
+  height: 34px;
+  display: flex;
+  padding: auto;
+
+  .mat-icon {
+    display: block;
+    fill: currentColor;
+    text-align: center;
+    width: 24px;
+    margin: auto auto;
+    vertical-align: middle;
+    background: no-repeat;
+  }
+
+  i, mat-icon {
+    font-size: 24px;
+    height: 24px;
+  }
+}

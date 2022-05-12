@@ -1,0 +1,241 @@
+<div class="table-wrapper">
+  <div class="row" style="height: 20px;background: transparent!important; box-shadow: none !important">
+    <div class="">
+      <!--<div class="col-lg-12 search-container">
+        <mat-icon style="left: 16%; position: absolute; margin-top: 10px;">search</mat-icon>
+        <input class="search-box" type="text" [placeholder]="search" [maxLength]="100"
+        [value]="inputSearch"
+        (change)="onChange($event)"
+               (input)="((($event.target.value.length > 1 || $event.target.value.length === 0)
+                        && $event.target.value.length < 200)
+                                       ? data.filter($event) : null)"
+               #filterOngoing>
+        <a class="close-search" *ngIf="filterOngoing.value"
+           [matTooltip]="cancelSearch"
+           (click)="reset() && filterOngoing.value = ''">
+          <img [src]="'/assets/icons/search_off-24px.svg'">
+        </a>
+      </div>-->
+    </div>
+  </div>
+  <!-- Table -->
+  <table mat-table #table="matSort"
+         [dataSource]="data " multiTemplateDataRows matSort
+         class="" *ngIf="displayedColumns && columnsToDisplay && data && data.totalElements && showTable"
+         (matSortChange)="data.sortIt($event)">
+    <ng-container [matColumnDef]="column.key" *ngFor="let column of displayedColumns">
+      <ng-container *ngIf="column.sort">
+        <th mat-header-cell *matHeaderCellDef
+            [class]="generateClass([column.class, column.align ? 'text-align-'+column.align : 'text-align-left'])"
+            mat-sort-header>
+          <app-is-mat-icon [input]="column.value"></app-is-mat-icon>
+        </th>
+      </ng-container>
+      <ng-container *ngIf="!column.sort">
+        <!-- Ajouter fonction generate Class -->
+        <ng-container *ngIf="column.clickable">
+          <th mat-header-cell *matHeaderCellDef
+              (click)="clicked.emit({key : column.key, statement : (column.statement = !column.statement)})"
+              [class]="generateClass([column.class, column.align ? 'text-align-'+column.align : 'text-align-left'])"
+              style="cursor: pointer;">
+            <app-is-mat-icon [input]="column.value"></app-is-mat-icon>
+            <app-is-mat-icon
+              *ngIf="column.valueStatement && column.statement !== undefined"
+              [input]="column.valueStatement[column.statement ? 1 : 0]">
+            </app-is-mat-icon>
+          </th>
+        </ng-container>
+        <ng-container *ngIf="!column.clickable">
+          <th mat-header-cell *matHeaderCellDef
+              [class]="generateClass([column.class, column.align ? 'text-align-'+column.align : 'text-align-left'])">
+            <app-is-mat-icon [input]="column.value"></app-is-mat-icon>
+          </th>
+        </ng-container>
+        <th mat-header-cell *matHeaderCellDef
+            [class]="generateClass([column.class, column.align ? 'text-align-'+column.align : 'text-align-left'])">
+          <app-is-mat-icon [input]="column.value"></app-is-mat-icon>
+        </th>
+      </ng-container>
+
+      <td *ngIf="EmptyRow" [attr.colspan]="columnsToDisplay.length" class="empty-row"></td>
+      <td class="row-style" mat-cell *matCellDef="let element"
+          [class]="generateClass([column.class, column.align ? 'text-align-'+column.align : ''])">
+        <ng-container *ngIf="element !== 'empty'" [ngSwitch]="column.module">
+          <!-- Button click -->
+          <ng-container *ngSwitchCase="'button-click'">
+            <a [matTooltip]="open"
+               class="btn-link-text"
+               (click)="callFunction.emit(element[column.key])">
+              <!--<ng-container *ngIf="column.display">
+                <app-is-mat-icon [input]="column.display"></app-is-mat-icon>
+              </ng-container>
+              <ng-container *ngIf="!column.display">
+                {{element[column.key]}}
+              </ng-container>-->
+              {{ details }}
+            </a>
+          </ng-container>
+          <!-- Button link -->
+          <ng-container *ngSwitchCase="'button-link'">
+            <!--                matBadge="*" matBadgePosition="before"
+               matBadgeColor="accent" -->
+            <a *ngIf="element.new" [matTooltip]="open"
+               class="mat-button btn-xs"
+               (click)="element.new = false"
+               [ngClass]="btnOverride == true ? 'link-btn': 'nowboard-btn'"
+               routerLink="{{column.override ? buildLink(column.override, element) : element[column.key]}}">
+              <ng-container *ngIf="column.display">
+                <app-is-mat-icon [input]="column.display"></app-is-mat-icon>
+              </ng-container>
+              <ng-container *ngIf="!column.display">
+                {{element[column.key]}}
+              </ng-container>
+            </a>
+            <a *ngIf="!element.new"
+               [matTooltip]="open"
+               class="mat-button btn-xs"
+               [ngClass]="btnOverride == true ? 'link-btn': 'nowboard-btn'"
+               routerLink="{{column.override ? buildLink(column.override, element) : element[column.key]}}">
+              <ng-container *ngIf="column.display">
+                <app-is-mat-icon class="is-mat-icon-cell" [input]="column.display"></app-is-mat-icon>
+              </ng-container>
+              <ng-container *ngIf="!column.display">
+                {{element[column.key]}}
+              </ng-container>
+            </a>
+          </ng-container>
+          <!-- Button link text -->
+          <ng-container *ngSwitchCase="'button-link-text'">
+            <a [matTooltip]="open"
+               class="btn-link-text btn-xs"
+               (click)="element.new = false"
+               routerLink="{{column.override ? buildLink(column.override, element) : element[column.key]}}">
+              {{ details }}
+            </a>
+          </ng-container>
+          <!-- icon custom-->
+          <ng-container *ngSwitchCase="'custom-icon'">
+            <input type="hidden" [value]="element[column.key]">
+            <img *ngIf="element[column.key] && column.valueOverride" [src]="column.valueOverride[element[column.key]]" style="width: 20px; height: 20px;">
+          </ng-container>
+          <ng-container *ngSwitchCase="'it-category'">
+            <app-equipement-type [name]="element[column.key]" [type]="element[column.override]"></app-equipement-type>
+          </ng-container>
+          <!-- icon it status -->
+          <ng-container *ngSwitchCase="'it-status'">
+            <app-equipement-status [type]="element[column.key]"></app-equipement-status>
+          </ng-container>
+          <!-- icon customer rank -->
+          <ng-container *ngSwitchCase="'customer-rank'">
+            <app-customer-rank [type]="element[column.key]"></app-customer-rank>
+          </ng-container>
+          <!-- icon priority-->
+          <ng-container *ngSwitchCase="'priority'">
+            <icon-priority [icon]="element['Icon']" [iconLabel]="element['Priority'] || null"></icon-priority>
+          </ng-container>
+          <!-- icon gender avatar-->
+          <ng-container *ngSwitchCase="'gender-avatar'">
+            <app-gender [type]="element[column.key]"></app-gender>
+          </ng-container>
+
+          <!-- icon gender avatar-->
+          <ng-container *ngSwitchCase="'phone-display'">
+            <app-phone-display [number]="element[column.key]"></app-phone-display>
+          </ng-container>
+
+          <!-- icon gender avatar-->
+          <ng-container *ngSwitchCase="'yes-no-display'">
+            <app-yes-nox
+              *ngIf="column.config && (column.config.displayNo !== undefined && column.config.displayYes !== undefined)"
+              [valid]="element[column.key]" [size]="column.config?.sizeIcon"
+              [displayNo]="column.config.displayYes" [displayYes]="column.config.displayNo"
+            >
+            </app-yes-nox>
+            <app-yes-nox
+              *ngIf="(!column.config || (column.config && !(column.config.displayNo || column.config.displayYes)))"
+              [valid]="element[column.key]" [size]="column.config?.sizeIcon">
+            </app-yes-nox>
+          </ng-container>
+          <!-- icon origin-->
+          <ng-container *ngSwitchCase="'origin'">
+            <icon-origin [icon]="element[column.key]"></icon-origin>
+          </ng-container>
+          <!-- icon name avatar-->
+          <ng-container *ngSwitchCase="'name-avatar'">
+            <name-avatar matTooltip="{{Join(element, column.override)}}"
+                         [src]="element[column.key]"
+                         [fontSize]="column.fontSize"
+                         [matTooltipClass]="'my-tooltip'">
+            </name-avatar>
+          </ng-container>
+          <!-- date format -->
+          <ng-container *ngSwitchCase="'date-format'">
+            <date-format style="padding-right: 10px" [date]="element[column.key]"></date-format>
+          </ng-container>
+          <!-- count rows -->
+          <ng-container *ngSwitchCase="'count-row'">
+                       <span style="padding-left: 14px">
+                           {{(element[column.key] && element[column.key].length ? element[column.key].length : '-')}}
+                       </span>
+          </ng-container>
+          <ng-container *ngSwitchDefault>
+            {{element[column.key]}}
+          </ng-container>
+        </ng-container>
+
+        <ng-container *ngIf="element === 'empty'">
+      <td [ngClass]="'empty-row'" mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+        empty row
+      </td>
+    </ng-container>
+
+    </td>
+    </ng-container>
+
+    <ng-container matColumnDef="expandedDetailX" *ngIf="displayDetail">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length"
+          [@detailExpand]="expandedElement && element == expandedElement ? 'expanded' : 'collapsed'"
+          style="height: 0">
+        <div *ngIf="element['CaseNumber'] && expandedElement">
+          <div class="element-detail" [innerHTML]="element.expanded">
+          </div>
+
+          <a [class.nav-expanded]="element == expandedElement"
+             [routerLink]="['/ticket/', element['CaseNumber']]" [title]="open">
+            <img class="detail-view-ticket" src="/assets/icons/eye.png">
+          </a>
+        </div>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <ng-container *ngIf="displayDetail">
+      <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+          class="element-row"
+          [ngClass]="!element || element === 'empty'? 'empty-row-none': 'detail-row'"
+          [class.expanded]="expandedElement == element"
+          (click)="expand(element)">
+      </tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetailX']"
+          [ngClass]="!expandedElement || !row || row === 'empty'? 'empty-row': 'detail-row'">
+
+      </tr>
+    </ng-container>
+    <ng-container *ngIf="!displayDetail">
+      <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+          class="element-row">
+      </tr>
+    </ng-container>
+  </table>
+  <ng-container *ngIf="data && data.totalElements === 0">
+    <div class="row" style="height: 84px;background: transparent!important;">
+      <div class="">
+        <div class="col-lg-12 search-container" style="text-align: center">
+          {{ noResult }}
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <mat-paginator #MatPaginatorCurrent *ngIf="data && data.totalElements > 0" [length]="data.totalElements"
+                 [pageSize]="data.size" [pageIndex]="data.number" [hidePageSize]="true"
+                 (page)="data.fetch($event.pageIndex)" showFirstLastButtons></mat-paginator>
+</div>

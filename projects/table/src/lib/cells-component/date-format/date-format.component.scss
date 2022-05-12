@@ -1,0 +1,17 @@
+span.time-badge {
+    display: block;
+    text-align: center !important;
+    padding-right: 25px;
+
+    .hour {
+        display: block;
+        font-weight: 900;
+        font-size: 12px;
+    }
+
+    .minute {
+        display: block;
+        font-weight: 300;
+        font-size: 10px;
+    }
+}
