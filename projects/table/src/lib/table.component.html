@@ -123,7 +123,7 @@
           </ng-container>
           <!-- icon it status -->
           <ng-container *ngSwitchCase="'it-status'">
-            <app-equipement-status [type]="element[column.key]"></app-equipement-status>
+            <app-equipement-status [lang]="lang" [type]="element[column.key]"></app-equipement-status>
           </ng-container>
           <!-- icon customer rank -->
           <ng-container *ngSwitchCase="'customer-rank'">

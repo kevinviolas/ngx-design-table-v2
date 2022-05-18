@@ -22,8 +22,10 @@
     "@angular/platform-browser": "~9.0.7",
     "@angular/platform-browser-dynamic": "~9.0.7",
     "@angular/router": "~9.0.7",
-    "google-libphonenumber": "^3.2.26",
+    "@material/menu": "^14.0.0",
+    "google-libphonenumber": "^3.2.27",
     "libphonenumber-js": "^1.9.44",
+    "nowboard-icon": "github:SFVII/ngx-nb-icon",
     "rxjs": "~6.6.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

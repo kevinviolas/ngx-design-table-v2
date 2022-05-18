@@ -23,6 +23,10 @@ import {MatBadgeModule} from "@angular/material/badge";
 import {TableService} from "./table.service";
 import {DesignTableInterface} from "./setting/Config.interface";
 import { NgxFlagsComponent } from './cells-component/ngx-flag/ngx-flag.component';
+import { CollabMenuComponent } from './cells-component/collab-menu/collab-menu.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {NowboardIconModule, NowboardIconService} from "nowboard-icon";
+import {Settings} from './Settings';
 @NgModule({
   declarations: [
     TableComponent,
@@ -37,7 +41,8 @@ import { NgxFlagsComponent } from './cells-component/ngx-flag/ngx-flag.component
     PhoneDisplayComponent,
     PriorityComponent,
     YesNoComponent,
-    NgxFlagsComponent
+    NgxFlagsComponent,
+    CollabMenuComponent
   ],
   imports: [
     PngIconModule,
@@ -48,7 +53,9 @@ import { NgxFlagsComponent } from './cells-component/ngx-flag/ngx-flag.component
     CommonModule,
     MatIconModule,
     RouterModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatMenuModule,
+    NowboardIconModule.forRoot(Settings.Icons_light)
   ],
   exports: [
     TableComponent,
@@ -66,13 +73,18 @@ import { NgxFlagsComponent } from './cells-component/ngx-flag/ngx-flag.component
     PngIconModule,
     MatPaginatorModule,
     MatTableModule,
-    MatSortModule,
+    MatSortModule,$
     MatTooltipModule,
     CommonModule,
     MatIconModule,
     RouterModule,
     MatBadgeModule,
-    NgxFlagsComponent
+    NgxFlagsComponent,
+    MatMenuModule,
+    NowboardIconModule
+  ],
+  providers: [
+    NowboardIconService
   ]
 })
 export class TableModule {

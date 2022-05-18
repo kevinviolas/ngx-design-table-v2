@@ -1,5 +1,6 @@
 import {ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {TableService} from "../../table.service";
+import { TranslateService } from '../../translate.service';
 
 @Component({
   selector: 'app-equipement-status',
@@ -11,10 +12,14 @@ export class EquipementStatusComponent implements OnInit, OnChanges {
   public icon: string;
   @Input() size: number | string;
   public css: any = {}
+  @Input() lang: string;
+
+  status = '';
 
   // private params: any = {};
 
-  constructor(private changeDetectorRefs: ChangeDetectorRef, private service: TableService) {
+  constructor(private changeDetectorRefs: ChangeDetectorRef, private service: TableService, 
+    private translate: TranslateService) {
     this.css.maxWidth = String((this.size || 22)) + 'px';
     this.css.maxHeight = String((this.size || 22)) + 'px';
     //this.params = this.service.settingConfig.equipmentStatus;
@@ -33,6 +38,14 @@ export class EquipementStatusComponent implements OnInit, OnChanges {
       "spare": "/assets/icons/status/spare.png",
     }*/
     const clean: string = (this.type || "").toLocaleLowerCase().replace(/[^A-Z0-9]+/ig, "");
+    switch (clean) {
+      case 'actif':
+        this.status = this.translate.translate(this.lang, 'FUNCTIONAL');
+      break;
+      case 'inactif':
+        this.status = this.translate.translate(this.lang, 'KO');
+      break;
+    }
     if (params[clean]) {
       this.icon = params[clean];
     } else {
