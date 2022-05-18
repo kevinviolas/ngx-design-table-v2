@@ -73,7 +73,7 @@ import {Settings} from './Settings';
     PngIconModule,
     MatPaginatorModule,
     MatTableModule,
-    MatSortModule,$
+    MatSortModule,
     MatTooltipModule,
     CommonModule,
     MatIconModule,
