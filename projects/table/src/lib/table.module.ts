@@ -23,10 +23,11 @@ import {MatBadgeModule} from "@angular/material/badge";
 import {TableService} from "./table.service";
 import {DesignTableInterface} from "./setting/Config.interface";
 import { NgxFlagsComponent } from './cells-component/ngx-flag/ngx-flag.component';
-import { CollabMenuComponent } from './cells-component/collab-menu/collab-menu.component';
+import { MenuComponent } from './cells-component/menu/menu.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {NowboardIconModule, NowboardIconService} from "nowboard-icon";
 import {Settings} from './Settings';
+import { StatusComponent } from './cells-component/status/status.component';
 @NgModule({
   declarations: [
     TableComponent,
@@ -42,7 +43,8 @@ import {Settings} from './Settings';
     PriorityComponent,
     YesNoComponent,
     NgxFlagsComponent,
-    CollabMenuComponent
+    MenuComponent,
+    StatusComponent
   ],
   imports: [
     PngIconModule,
@@ -81,7 +83,8 @@ import {Settings} from './Settings';
     MatBadgeModule,
     NgxFlagsComponent,
     MatMenuModule,
-    NowboardIconModule
+    NowboardIconModule,
+    StatusComponent
   ],
   providers: [
     NowboardIconService

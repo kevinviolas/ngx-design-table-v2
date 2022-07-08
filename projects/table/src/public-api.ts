@@ -14,6 +14,8 @@ export * from './lib/cells-component/png-icon/png-icon.component';
 export * from './lib/cells-component/png-icon/png-icon.module';
 export * from './lib/cells-component/priority/priority.component';
 export * from './lib/cells-component/yes-no/yes-no.component';
+export * from './lib/cells-component/ngx-flag/ngx-flag.component';
 export * from './lib/table.service';
 export * from './lib/table.component';
 export * from './lib/table.module';
+export * from './lib/cells-component/status/status.component';

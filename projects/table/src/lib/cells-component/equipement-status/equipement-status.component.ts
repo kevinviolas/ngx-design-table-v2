@@ -42,7 +42,7 @@ export class EquipementStatusComponent implements OnInit, OnChanges {
       case 'actif':
         this.status = this.translate.translate(this.lang, 'FUNCTIONAL');
       break;
-      case 'inactif':
+      default:
         this.status = this.translate.translate(this.lang, 'KO');
       break;
     }

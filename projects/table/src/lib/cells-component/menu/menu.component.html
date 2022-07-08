@@ -1,0 +1,26 @@
+<nb-icon class="menu-show" [matMenuTriggerFor]="menu" [icon]="'menu_kebab'" [size]="1.5"></nb-icon>
+
+<mat-menu #menu="matMenu">
+    <ng-container *ngFor="let menu of menuSettings">
+        <button [ngClass]="menu.Class" (click)="action(menu)" mat-menu-item>
+            <nb-icon [primary]="menu.IconColor" [icon]="menu.Icon" *ngIf="menu.Icon" [size]="1.5"></nb-icon>
+            {{ menu.Label }}
+        </button>    
+    </ng-container>
+    <!--<button mat-menu-item>
+        <nb-icon [icon]="'information_circle'" [size]="1.5"></nb-icon>
+        <span>Détail</span>
+    </button>
+    <button mat-menu-item>
+        <nb-icon [icon]="'edit_1'" [size]="1.5"></nb-icon>
+        <span>Modifier</span>
+    </button>
+    <button mat-menu-item>
+        <nb-icon [icon]="'display_1'" [size]="1.5"></nb-icon>
+        <span>Assigner un équipement</span>
+    </button>
+    <button class="menu-red" mat-menu-item>
+        <nb-icon [primary]="'#F6544C'" [icon]="'delete_1'" [size]="1.5"></nb-icon>
+        <span>Supprimer</span>
+    </button>-->
+</mat-menu>

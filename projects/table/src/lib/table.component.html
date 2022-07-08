@@ -110,7 +110,7 @@
                class="btn-link-text btn-xs"
                (click)="element.new = false"
                routerLink="{{column.override ? buildLink(column.override, element) : element[column.key]}}">
-              {{ details }}
+               {{ column.value == 'Actions' ? details : column.key }}
             </a>
           </ng-container>
           <!-- icon custom-->
@@ -131,11 +131,22 @@
           </ng-container>
           <!-- icon priority-->
           <ng-container *ngSwitchCase="'priority'">
-            <icon-priority [icon]="element['Icon']" [iconLabel]="element['Priority'] || null"></icon-priority>
+            <icon-priority [icon]="element['Icon']" [iconLabel]="element[column.key] || null"></icon-priority>
           </ng-container>
+
+          <!-- status -->
+          <ng-container *ngSwitchCase="'status'">
+            <status [label]="element[column.key]"></status>
+          </ng-container>
+
           <!-- icon gender avatar-->
           <ng-container *ngSwitchCase="'gender-avatar'">
             <app-gender [type]="element[column.key]"></app-gender>
+          </ng-container>
+
+          <!-- menu -->
+          <ng-container *ngSwitchCase="'menu'">
+            <menu (callHandler)="callFunction.emit($event)" [element]="element" [menuSettings]="column.config"></menu>
           </ng-container>
 
           <!-- icon gender avatar-->

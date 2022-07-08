@@ -1,94 +1,109 @@
 .now-low {
-    background: rgba(17, 150, 3, 0.56) 0% 0% no-repeat padding-box !important;
-    border-radius: 5px;
+    background-color: #00FCBE;
+    border-radius: 1000px;
     border: none !important;
     text-align: left;
-    color: #3c5905 !important;
-    font: normal normal normal 14px/36px 'Nexa Text';
+    color: white;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
     letter-spacing: 0px;
-    min-width: 100% !important;
-    padding: 0px 10px;
+    //min-width: 100% !important;
+    padding: 8px 19px;
     overflow: hidden;
     white-space: nowrap;
     max-width: 80px !important;
     text-overflow: ellipsis;
     display: inline-block;
-    height: 36px;
+    height: 20px;
     text-align: center;
 }
 
 .now-normal {
-    background: rgba(170, 238, 230, 0.56) 0% 0% no-repeat padding-box !important;
-    border-radius: 5px;
+    background-color: #8E62EF;
+    border-radius: 1000px;
     border: none !important;
     text-align: left;
-    font: normal normal normal 14px/36px 'Nexa Text';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
     letter-spacing: 0px;
-    color: #169D8A !important;
-    min-width: 100% !important;
-    padding: 0px 10px;
+    color: white;
+    //min-width: 100% !important;
+    padding: 8px 19px;
     overflow: hidden;
     white-space: nowrap;
     max-width: 80px !important;
     text-overflow: ellipsis;
     display: inline-block;
-    height: 36px;
+    height: 20px;
     text-align: center;
 }
 
 .now-urgent {
-    background: rgba(243, 161, 36, 0.56) 0% 0% no-repeat padding-box !important;
-    border-radius: 5px;
+    background-color: #F6D04C;
+    border-radius: 1000px;
     border: none !important;
     text-align: left;
-    font: normal normal normal 14px/36px 'Nexa Text';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
     letter-spacing: 0px;
-    color: #C48E3B !important;
-    min-width: 100% !important;
-    padding: 0px 10px;
+    color: white;
+    //min-width: 100% !important;
+    padding: 8px 19px;
     overflow: hidden;
     white-space: nowrap;
     max-width: 80px !important;
     text-overflow: ellipsis;
     display: inline-block;
-    height: 36px;
+    height: 20px;
     text-align: center;
 }
 
 .now-critic {
-    background: rgba(215, 5, 43, 0.56) 0% 0% no-repeat padding-box !important;
-    border-radius: 5px;
+    background: #F6544C !important;
+    border-radius: 1000px;
     border: none !important;
     text-align: left;
-    font: normal normal normal 14px/36px 'Nexa Text';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
     letter-spacing: 0px;
-    color: #7C1C2D !important;
-    min-width: 100% !important;
-    padding: 0px 10px;
+    color: white;
+    //min-width: 100% !important;
+    padding: 8px 19px;
     overflow: hidden;
     white-space: nowrap;
     max-width: 80px !important;
     text-overflow: ellipsis;
     display: inline-block;
-    height: 36px;
+    height: 20px;
     text-align: center;
 }
 
 .now-vip {
-    background: rgba(120, 125, 130, 0.56) 0% 0% no-repeat padding-box !important;
-    border-radius: 5px;
+    background: #FFFFFF4D !important;
+    border-radius: 1000px;
     border: none !important;
     text-align: left;
-    font: normal normal normal 12px/36px 'Nexa Text';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
     letter-spacing: 0px;
-    color: #171F26 !important;
-    min-width: 100% !important;
-    padding: 0px 10px;
+    color: white;
+    //min-width: 100% !important;
+    padding: 8px 19px;
     overflow: hidden;
     white-space: nowrap;
     max-width: 80px !important;
     text-overflow: ellipsis;
     display: inline-block;
-    height: 36px;
+    height: 20px;
     text-align: center;
 }

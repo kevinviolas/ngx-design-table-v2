@@ -1,0 +1,9 @@
+.status {
+    background: #F6544C;
+    border-radius: 1000px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+    padding: 8px 19px;
+}

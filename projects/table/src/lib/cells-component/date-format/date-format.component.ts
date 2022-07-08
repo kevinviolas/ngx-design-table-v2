@@ -18,7 +18,7 @@ export class DateFormatComponent implements OnInit, OnChanges {
 
     run(date:string) {
         if (date) {
-            let t: string[] = date.split(' ');
+            let t: string[] = date.replace(',', '').split(' ');
             return  `<span class="">
                     <span class="hour">${t[0]}</span>
                     <!--<span class="minute">${t[1]}</span>-->

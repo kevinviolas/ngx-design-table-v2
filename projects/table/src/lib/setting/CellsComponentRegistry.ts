@@ -21,5 +21,7 @@ export enum CellsComponentList {
   ItCategory = 'it-category',
   ItStatus = 'it-status',
   CustomIcon = 'custom-icon',
-  PngIcon = 'png-icon'
+  PngIcon = 'png-icon',
+  Menu = 'menu',
+  Status = 'status'
 }
