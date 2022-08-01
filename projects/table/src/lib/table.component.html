@@ -189,9 +189,9 @@
                            {{(element[column.key] && element[column.key].length ? element[column.key].length : '-')}}
                        </span>
           </ng-container>
-          <ng-container *ngSwitchDefault>
-            {{element[column.key]}}
-          </ng-container>
+          <div [innerHTML]="element[column.key]" *ngSwitchDefault>
+            
+          </div>
         </ng-container>
 
         <ng-container *ngIf="element === 'empty'">
