@@ -28,15 +28,16 @@ export class MenuComponent implements OnInit {
   action(menu: IMenuSettings) {
     if (menu.Data && menu.Data.length > 0 && menu.Type == 'link') {
       let list = [];
-      menu.Data.forEach(dat => {
+      for(const dat of menu.Data) {
+        console.log(this.element[dat]);
         list.push(this.element[dat]);
-      });
+      };
       menu.Data = list;
     } else if (menu.Data && menu.Data.length > 0 && menu.Type == 'modal') {
       let list = [];
-      menu.Data.forEach(dat => {
+      for(const dat of menu.Data) {
         list[dat] = this.element[dat];
-      });
+      };
       menu.Data = list;
     }
     this.callHandler.emit(menu)

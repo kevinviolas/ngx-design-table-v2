@@ -139,6 +139,11 @@
             <status [label]="element[column.key]"></status>
           </ng-container>
 
+          <!-- status -->
+          <ng-container *ngSwitchCase="'status-icon'">
+            <status-icon [label]="element[column.key]"></status-icon>
+          </ng-container>
+
           <!-- icon gender avatar-->
           <ng-container *ngSwitchCase="'gender-avatar'">
             <app-gender [type]="element[column.key]"></app-gender>
@@ -189,9 +194,9 @@
                            {{(element[column.key] && element[column.key].length ? element[column.key].length : '-')}}
                        </span>
           </ng-container>
-          <div [innerHTML]="element[column.key]" *ngSwitchDefault>
-            
-          </div>
+          <ng-container *ngSwitchDefault>
+              <div [innerHTML]="element[column.key]"></div>
+          </ng-container>
         </ng-container>
 
         <ng-container *ngIf="element === 'empty'">

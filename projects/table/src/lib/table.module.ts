@@ -28,6 +28,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {NowboardIconModule, NowboardIconService} from "nowboard-icon";
 import {Settings} from './Settings';
 import { StatusComponent } from './cells-component/status/status.component';
+import { StatusIconComponent } from './cells-component/status-icon/status-icon.component';
 @NgModule({
   declarations: [
     TableComponent,
@@ -44,7 +45,8 @@ import { StatusComponent } from './cells-component/status/status.component';
     YesNoComponent,
     NgxFlagsComponent,
     MenuComponent,
-    StatusComponent
+    StatusComponent,
+    StatusIconComponent
   ],
   imports: [
     PngIconModule,
