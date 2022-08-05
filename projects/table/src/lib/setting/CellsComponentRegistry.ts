@@ -25,4 +25,5 @@ export enum CellsComponentList {
   Menu = 'menu',
   Status = 'status',
   StatusIcon = 'status-icon',
+  DoubleLine = 'double-line',
 }

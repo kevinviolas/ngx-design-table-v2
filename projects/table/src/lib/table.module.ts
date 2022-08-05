@@ -29,6 +29,7 @@ import {NowboardIconModule, NowboardIconService} from "nowboard-icon";
 import {Settings} from './Settings';
 import { StatusComponent } from './cells-component/status/status.component';
 import { StatusIconComponent } from './cells-component/status-icon/status-icon.component';
+import { DoubleLineComponent } from './cells-component/double-line/double-line.component';
 @NgModule({
   declarations: [
     TableComponent,
@@ -46,7 +47,8 @@ import { StatusIconComponent } from './cells-component/status-icon/status-icon.c
     NgxFlagsComponent,
     MenuComponent,
     StatusComponent,
-    StatusIconComponent
+    StatusIconComponent,
+    DoubleLineComponent
   ],
   imports: [
     PngIconModule,

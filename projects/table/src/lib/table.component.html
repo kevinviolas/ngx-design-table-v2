@@ -194,6 +194,10 @@
                            {{(element[column.key] && element[column.key].length ? element[column.key].length : '-')}}
                        </span>
           </ng-container>
+          <!-- double line -->
+          <ng-container *ngSwitchCase="'double-line'">
+            <double-line [line1]="element[column.key]" [line2]="element[column.override]"></double-line>
+          </ng-container>
           <ng-container *ngSwitchDefault>
               <div [innerHTML]="element[column.key]"></div>
           </ng-container>
